@@ -1,0 +1,52 @@
+{
+    "version": 1,
+    "author": "Gabriel Ferla",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -14.5, "left": -72.2, "attrs": {} },
+      {
+        "type": "wokwi-lcd1602",
+        "id": "lcd1",
+        "top": -80,
+        "left": 178.4,
+        "attrs": { "pins": "i2c" }
+      },
+      {
+        "type": "wokwi-buzzer",
+        "id": "bz1",
+        "top": 21.6,
+        "left": 88.2,
+        "attrs": { "volume": "0.1" }
+      },
+      {
+        "type": "wokwi-pushbutton",
+        "id": "btn1",
+        "top": 57,
+        "left": -179.4,
+        "rotate": 90,
+        "attrs": { "color": "green" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 32.75,
+        "left": -134.4,
+        "attrs": { "value": "1000" }
+      }
+    ],
+    "connections": [
+      [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+      [ "lcd1:SCL", "esp:D22", "green", [ "h-115.2", "v38.7" ] ],
+      [ "lcd1:SDA", "esp:D21", "green", [ "h-105.6", "v77" ] ],
+      [ "lcd1:VCC", "esp:VIN", "red", [ "h-259.2", "v182.5" ] ],
+      [ "lcd1:GND", "esp:GND.1", "black", [ "h-134.4", "v182.4", "h-9.6" ] ],
+      [ "btn1:1.r", "esp:GND.2", "black", [ "v0" ] ],
+      [ "btn1:2.r", "esp:VIN", "red", [ "v0" ] ],
+      [ "btn1:1.l", "r1:1", "blue", [ "v0" ] ],
+      [ "r1:2", "esp:D34", "blue", [ "v0" ] ],
+      [ "esp:GND.1", "bz1:1", "black", [ "h0" ] ],
+      [ "esp:D4", "bz1:2", "red", [ "h0" ] ]
+    ],
+    "dependencies": {}
+  }
